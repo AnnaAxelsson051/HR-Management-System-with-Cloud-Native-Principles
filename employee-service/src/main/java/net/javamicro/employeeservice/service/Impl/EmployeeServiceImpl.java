@@ -6,6 +6,7 @@ import net.javamicro.employeeservice.dto.DepartmentDto;
 import net.javamicro.employeeservice.dto.EmployeeDto;
 import net.javamicro.employeeservice.entity.Employee;
 import net.javamicro.employeeservice.repository.EmployeeRepository;
+import net.javamicro.employeeservice.service.APIClient;
 import net.javamicro.employeeservice.service.EmployeeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -17,9 +18,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeRepository employeeRepository;
 
-    private WebClient webClient;
-
-    //Saving new employee info
+    private APIClient apiClient;
     @Override
     public EmployeeDto saveEmployee(EmployeeDto employeeDto) {
         Employee employee = new Employee(
@@ -45,13 +44,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public APIResponseDto getEmployeeById(Long employeeId) {
         Employee employee = employeeRepository.findById(employeeId).get();
 
-        //Making a rest api call from emp service to dept service
-        DepartmentDto departmentDto = webClient.get()
-                .uri("http://localhost:8080/api/departments/" + employee.getDepartmentCode())
-                .retrieve()
-                .bodyToMono(DepartmentDto.class)
-                .block();
-
+        DepartmentDto departmentDto = apiClient.getDepartment(employee.getDepartmentCode());
         EmployeeDto employeeDto = new EmployeeDto(
                 employee.getId(),
                 employee.getFirstName(),
