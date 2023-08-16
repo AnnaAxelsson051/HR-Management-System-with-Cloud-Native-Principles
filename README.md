@@ -1,4 +1,5 @@
-# Microservices HR Management System
+# HR System with Microservices and Spring Cloud
+
 
 ## Description
 
