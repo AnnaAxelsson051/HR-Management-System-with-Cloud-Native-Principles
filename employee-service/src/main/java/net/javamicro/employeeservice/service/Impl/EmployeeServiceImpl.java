@@ -16,7 +16,8 @@ import org.springframework.web.client.RestTemplate;
 public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeRepository employeeRepository;
-    private RestTemplate restTemplate;
+
+    private WebClient webClient;
 
     //Saving new employee info
     @Override
@@ -44,10 +45,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     public APIResponseDto getEmployeeById(Long employeeId) {
         Employee employee = employeeRepository.findById(employeeId).get();
 
-        ResponseEntity<DepartmentDto> responseEntity = restTemplate.getForEntity("http://localhost:8080/api/departments/" + employee.getDepartmentCode(),
-                DepartmentDto.class);
-
-        DepartmentDto departmentDto = responseEntity.getBody();
+        //Making a rest api call from emp service to dept service
+        DepartmentDto departmentDto = webClient.get()
+                .uri("http://localhost:8080/api/departments/" + employee.getDepartmentCode())
+                .retrieve()
+                .bodyToMono(DepartmentDto.class)
+                .block();
 
         EmployeeDto employeeDto = new EmployeeDto(
                 employee.getId(),
