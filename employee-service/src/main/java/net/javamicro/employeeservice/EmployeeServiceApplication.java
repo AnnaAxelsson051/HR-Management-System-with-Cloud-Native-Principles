@@ -10,6 +10,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
 @EnableFeignClients
+@EnableEurekaClient
 public class EmployeeServiceApplication {
 
 	//Configure webclient as a spring bean
