@@ -5,8 +5,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.0</version>
-		<relativePath/> <!-- 	<version>3.0.9</version> lookup parent from repository -->
+		<version>2.7.4</version>
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>net.javamicro</groupId>
 	<artifactId>department-service</artifactId>
