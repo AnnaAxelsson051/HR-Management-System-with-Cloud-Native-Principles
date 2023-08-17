@@ -17,6 +17,7 @@ A HR Management System built with Spring Boot, microservices and Spring Cloud.
 - Eureka and Service discovery to manage and locate services
 - Spring Cloud Gateway for client request routing, load balancing and security
 - MVC
+- Spring Cloud config server for centralized externalized configuration management
 - RESTful web services
 - Spring Data Jpa
 - MySQL
