@@ -14,7 +14,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="department-service" target="17" />
-      <module name="employee-service" target="1.6" />
+      <module name="employee-service" target="17" />
       <module name="service-registry" target="17" />
     </bytecodeTargetLevel>
   </component>

@@ -5,6 +5,8 @@
 
 A HR Management System built with Spring Boot, microservices and Spring Cloud.
 
+---
+
 ## Technologies and design
 
 - Spring Boot
@@ -13,8 +15,7 @@ A HR Management System built with Spring Boot, microservices and Spring Cloud.
 - Microservices
 - Spring Cloud Open Feign for microservice communication
 - Eureka and Service discovery to manage and locate services
-- Loadbalancer to distribute traffic
-- Spring Cloud Gateway
+- Spring Cloud Gateway for client request routing, load balancing and security
 - MVC
 - RESTful web services
 - Spring Data Jpa
