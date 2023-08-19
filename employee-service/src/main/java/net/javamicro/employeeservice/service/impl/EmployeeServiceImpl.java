@@ -42,32 +42,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         return savedEmployeeDto;
     }
 
+    // Retrieves an employee's details and their
+    // associated department using WebClient, with a circuit breaker
+    // that falls back to a default department on failure
     @CircuitBreaker(name = "${spring.application.name}", fallbackMethod = "getDefaultDepartment")
     @Override
     public APIResponseDto getEmployeeById(Long employeeId) {
-        Employee employee = employeeRepository.findById(employeeId).get();
-
-        DepartmentDto departmentDto = new DepartmentDto();
-        departmentDto.setDepartmentName("R&D Department");
-        departmentDto.setDepartmentCode("RD001");
-        departmentDto.setDepartmentDescription("Research and Development Department");
-
-        EmployeeDto employeeDto = new EmployeeDto(
-                employee.getId(),
-                employee.getFirstName(),
-                employee.getLastName(),
-                employee.getEmail(),
-                employee.getDepartmentCode()
-        );
-
-        APIResponseDto apiResponseDto = new APIResponseDto();
-        apiResponseDto.setEmployee(employeeDto);
-        apiResponseDto.setDepartment(departmentDto);
-
-        return apiResponseDto;
-    }
-
-    public APIResponseDto getDefaultDepartment(Long employeeId) {
         Employee employee = employeeRepository.findById(employeeId).get();
 
         // ResponseEntity<DepartmentDto> responseEntity = restTemplate.getForEntity("http://DEPARTMENT-SERVICE/api/departments/" + employee.getDepartmentCode(),
@@ -96,5 +76,31 @@ public class EmployeeServiceImpl implements EmployeeService {
         apiResponseDto.setDepartment(departmentDto);
 
         return apiResponseDto;
+    }
+
+    // Provides a default department response for a given employee ID
+    // when primary method fails
+    public APIResponseDto getDefaultDepartment(Long employeeId, Exception exception) {
+        Employee employee = employeeRepository.findById(employeeId).get();
+
+        DepartmentDto departmentDto = new DepartmentDto();
+        departmentDto.setDepartmentName("R&D Department");
+        departmentDto.setDepartmentCode("RD001");
+        departmentDto.setDepartmentDescription("Research and Development Department");
+
+        EmployeeDto employeeDto = new EmployeeDto(
+                employee.getId(),
+                employee.getFirstName(),
+                employee.getLastName(),
+                employee.getEmail(),
+                employee.getDepartmentCode()
+        );
+
+        APIResponseDto apiResponseDto = new APIResponseDto();
+        apiResponseDto.setEmployee(employeeDto);
+        apiResponseDto.setDepartment(departmentDto);
+
+        return apiResponseDto;
+
     }
 }
