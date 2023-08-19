@@ -24,7 +24,7 @@ A HR Management System built with Spring Boot, microservices and Spring Cloud.
 - Using RabbitMQ as message broker
 - Installed and set up RabbitMQ with Docker
 - Spring Cloud Sleuth for distributed tracing to monitor and analyze the flow of requests as they travel through different services
-- Circuit breaker pattern and Retry pattern
+- Circuit breaker pattern with Spring Cloud Circuit breaker and Retry pattern
 - RESTful web services
 - Spring Data Jpa
 - MySQL
