@@ -1,6 +1,7 @@
 package net.javamicro.employeeservice.service.impl;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import lombok.AllArgsConstructor;
 import net.javamicro.employeeservice.dto.APIResponseDto;
 import net.javamicro.employeeservice.dto.DepartmentDto;
@@ -9,6 +10,8 @@ import net.javamicro.employeeservice.entity.Employee;
 import net.javamicro.employeeservice.repository.EmployeeRepository;
 import net.javamicro.employeeservice.service.APIClient;
 import net.javamicro.employeeservice.service.EmployeeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -16,6 +19,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 @AllArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeServiceImpl.class);
     private EmployeeRepository employeeRepository;
 
     // private RestTemplate restTemplate;
@@ -45,9 +49,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     // Retrieves an employee's details and their
     // associated department using WebClient, with a circuit breaker
     // that falls back to a default department on failure
+
     @CircuitBreaker(name = "${spring.application.name}", fallbackMethod = "getDefaultDepartment")
     @Override
     public APIResponseDto getEmployeeById(Long employeeId) {
+
+        LOGGER.info("inside getEmployeeById() method");
         Employee employee = employeeRepository.findById(employeeId).get();
 
         // ResponseEntity<DepartmentDto> responseEntity = restTemplate.getForEntity("http://DEPARTMENT-SERVICE/api/departments/" + employee.getDepartmentCode(),
@@ -81,6 +88,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     // Provides a default department response for a given employee ID
     // when primary method fails
     public APIResponseDto getDefaultDepartment(Long employeeId, Exception exception) {
+
+        LOGGER.info("inside getDefaultDepartment() method");
         Employee employee = employeeRepository.findById(employeeId).get();
 
         DepartmentDto departmentDto = new DepartmentDto();
