@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import net.javamicro.employeeservice.dto.APIResponseDto;
 import net.javamicro.employeeservice.dto.DepartmentDto;
 import net.javamicro.employeeservice.dto.EmployeeDto;
+import net.javamicro.employeeservice.dto.OrganizationDto;
 import net.javamicro.employeeservice.entity.Employee;
 import net.javamicro.employeeservice.mapper.EmployeeMapper;
 import net.javamicro.employeeservice.repository.EmployeeRepository;
@@ -60,11 +61,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         //  DepartmentDto departmentDto = apiClient.getDepartment(employee.getDepartmentCode());
 
+        OrganizationDto organizationDto = webClient.get()
+                .uri("http://localhost:8083/api/organizations/", employee.getOrganizationCode())
+                .retrieve()
+                .bodyToMono(OrganizationDto.class)
+                .block();
+
         EmployeeDto employeeDto = EmployeeMapper.mapToEmployeeDto(employee);
 
         APIResponseDto apiResponseDto = new APIResponseDto();
         apiResponseDto.setEmployee(employeeDto);
         apiResponseDto.setDepartment(departmentDto);
+        apiResponseDto.setOrganization(organizationDto);
 
         return apiResponseDto;
     }
