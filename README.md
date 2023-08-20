@@ -20,7 +20,7 @@ facilitating client request routing and load balancing.
 ### Configuration, Monitoring and Stability
 
 Spring Cloud Config Server provides centralized externalized 
-configuration management, loading config files from a Git repository. 
+configuration management, loading config files from a [Git repository](https://github.com/AnnaAxelsson051/Config-Server-repo). 
 Spring Cloud Bus simplifies 
 broadcasting configuration changes and events across multiple microservice 
 instances for streamlined configuration updates and RabbitMQ is used as a 
