@@ -33,27 +33,27 @@ further enhances system stability.
 ---
 
 ## Tech Stack
-Spring Boot
-Java
-RESTful web services
-Spring Data Jpa
-MySQL
-Spring Cloud Open Feign
-Spring Cloud Gateway
-Spring Cloud Config Server
-Spring Cloud Bus
-RabbitMQ
-Docker
-Spring Cloud Sleuth
-Spring Cloud Circuit
-Resilience4j
+- Spring Boot
+- Java
+- RESTful web services
+- Spring Data Jpa
+- MySQL
+- Spring Cloud Open Feign
+- Spring Cloud Gateway
+- Spring Cloud Config Server
+- Spring Cloud Bus
+- RabbitMQ
+- Docker
+- Spring Cloud Sleuth
+- Spring Cloud Circuit
+- Resilience4j
 
 ## Architectural Principles
-Cloud Native
-Eureka and Service Discovery
-Domain Driven Design
-MVC
-Microservices
-Circuit Breaker Pattern
+- Cloud Native
+- Eureka and Service Discovery
+- Domain Driven Design
+- MVC
+- Microservices
+- Circuit Breaker Pattern
 
 
