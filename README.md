@@ -23,7 +23,7 @@ Spring Cloud Config Server provides centralized externalized
 configuration management, loading config files from a Git repository. 
 Spring Cloud Bus simplifies 
 broadcasting configuration changes and events across multiple microservice 
-instances for streamlined configuration updates, and RabbitMQ is used as a 
+instances for streamlined configuration updates and RabbitMQ is used as a 
 message broker to facilitate smooth communication between 
 microservices. Spring Cloud Sleuth enables distributed tracing, facilitating monitoring and 
 analysis of request flows. Additionally the Circuit Breaker pattern, 
