@@ -47,6 +47,8 @@ further enhances system stability.
 - Spring Cloud Sleuth
 - Spring Cloud Circuit
 - Resilience4j
+- React
+- Bootstrap
 
 ## Architectural Principles
 - Cloud Native
