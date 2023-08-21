@@ -6,6 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">
     <h1>HR Management System</h1>
+    {/*  <EmployeeComponent/> */}
       </header>
     </div>
   );
