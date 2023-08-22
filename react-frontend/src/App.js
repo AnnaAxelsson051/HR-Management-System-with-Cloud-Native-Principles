@@ -11,7 +11,8 @@ function App() {
   return (
     <div className="container">
      {/*<header className="App-header">*/} 
-    <h1>HR Management System</h1>
+     <br/> 
+    {/*<h1 className='text-center'>📁 Human Resources Management System</h1>*/}
     <EmployeeComponent/>
       {/*</header>*/}
     </div>
