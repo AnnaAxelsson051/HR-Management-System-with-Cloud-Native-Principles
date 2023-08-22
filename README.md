@@ -34,6 +34,7 @@ further enhances system stability.
 
 ## User Interface
 
+![User Interface](User-interface-new.png)
 ![User Interface](User-interface.png)
 
 ---
