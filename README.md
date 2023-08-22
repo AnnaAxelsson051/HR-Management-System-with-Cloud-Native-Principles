@@ -32,6 +32,12 @@ further enhances system stability.
 
 ---
 
+## User Interface
+
+![User Interface](User-interface.png)
+
+---
+
 ## Tech Stack
 - Spring Boot
 - Java
