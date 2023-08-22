@@ -1,6 +1,12 @@
 
 # HR Management System with Cloud Native Principles
 
+## User Interface
+
+![User Interface](User-interface-new.png)
+
+---
+
 ## Description
 
 An HR Management System allowing employers to administrate workforce data 
@@ -29,13 +35,6 @@ microservices. Spring Cloud Sleuth enables distributed tracing, facilitating mon
 analysis of request flows. Additionally the Circuit Breaker pattern, 
 implemented through Spring Cloud Circuit Breaker with resilience4j, 
 further enhances system stability.
-
----
-
-## User Interface
-
-![User Interface](User-interface-new.png)
-![User Interface](User-interface.png)
 
 ---
 
