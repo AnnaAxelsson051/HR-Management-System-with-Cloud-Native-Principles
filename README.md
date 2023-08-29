@@ -9,7 +9,7 @@
 
 ## Description
 
-An HR Management System allowing employers to administrate workforce data 
+An HR Management System allowing employers to administrate workforce data, 
 built with Spring Boot, Spring Cloud, Java and MySQL that 
 embraces cloud-native principles. Built with Domain Driven Design 
 the application utilizes a microservices architecture to enhance 
